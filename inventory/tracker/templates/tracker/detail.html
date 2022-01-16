@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+<h1>Inventory Item: {{ inventoryitem.item_name }} {{ inventoryitem.company }}</h1>
+<ul>
+    <li>
+        Item name: {{ inventoryitem.item_name }}
+    </li>
+    <li>
+        Company: {{ inventoryitem.company }}
+    </li>
+    <li>
+        Item Description: {{ inventoryitem.item_description }}
+    </li>
+    <li>
+        Stock Quantity: {{ inventoryitem.stock_quantity }}
+    </li>
+    <li>
+        Item Location: {{ inventoryitem.item_location }}
+    </li>
+    <li>
+        Release Date: {{ inventoryitem.release_date }}
+    </li>
+</ul>
+<div>
+     <a href="{% url 'tracker:index' %}"> List of Inventory Items </a>
+    |
+     <a href="{% url 'tracker:edit' inventoryitem.id %}"> Edit Inventory Item </a>
+    |
+     <a href="{% url 'tracker:delete' inventoryitem.id %}"> Delete Inventory Item </a>
+</div>
+
+</body>
+</html>

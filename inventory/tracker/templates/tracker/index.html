@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Tracker</title>
+</head>
+<body>
+<h1>Inventory Tracker</h1>
+{% if inventory_item_list %}
+    <ul>
+    {% for item in inventory_item_list %}
+        <li><a href="{% url 'tracker:detail' item.id %}">{{ item.item_name }} {{ item.company }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Items in inventory</p>
+{% endif %}
+<a href="{% url 'tracker:create' %}"> Create New Inventory Item</a>
+</body>
+</html>
