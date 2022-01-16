@@ -9,10 +9,6 @@ from django.urls import reverse
 
 from .models import InventoryItem
 
-import logging
-
-
-logger = logging.getLogger(__name__)
 
 class IndexView(generic.ListView):
     template_name = 'tracker/index.html'
@@ -80,5 +76,5 @@ def create_inventory_item(request):
 def delete_inventory_item(request, inventory_item_id):
     inventory_item = get_object_or_404(InventoryItem, pk=inventory_item_id)
     inventory_item.delete()
-    logger.info(f'Delete Action for InventoryItem: {inventory_item}')
+
     return HttpResponseRedirect(reverse('tracker:index'))

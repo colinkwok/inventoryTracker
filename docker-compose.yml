@@ -1,5 +1,22 @@
 version: '3'
 services:
+  # backend server
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    volumes:
+      - static:/static:rw
+    environment:
+      DJANGO_MODE: production
+  # database server
+  db:
+    image: "postgres:latest"
+    volumes:
+      - db:/var/lib/postgresql/data:rw
+    environment:
+      POSTGRES_USER: project
+      POSTGRES_PASSWORD: secret
 
   # frontend web server
   web:
@@ -9,8 +26,8 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./:/code:ro
+      - static:/static:ro
 
-  # database server
+volumes:
+  static:
   db:
-    image: "postgres:latest"

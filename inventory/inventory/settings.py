@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-7hre-f2-ac&%)0pg_q8v*kyh5s9pxi(6g%n_(6cx80z$hdwnb4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['app', 'localhost']
 
 
 # Application definition
@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'inventory.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'inventory',
-        'USER': 'colinkwok',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'project',
+        'USER': 'project',
+        'PASSWORD': 'secret',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
@@ -124,6 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
