@@ -16,5 +16,7 @@
     <p>No Items in inventory</p>
 {% endif %}
 <a href="{% url 'tracker:create' %}"> Create New Inventory Item</a>
+|
+<a href="{% url 'tracker:export_inventory_to_csv' %}"> Export Inventory to CSV</a>
 </body>
 </html>

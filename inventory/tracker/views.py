@@ -1,3 +1,5 @@
+import csv
+
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -78,3 +80,19 @@ def delete_inventory_item(request, inventory_item_id):
     inventory_item.delete()
 
     return HttpResponseRedirect(reverse('tracker:index'))
+
+
+
+def export_inventory_to_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="inventory.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['item_name', 'company', 'item_description', 'stock_quantity', 'item_location', 'release_date'])
+
+    inventory = InventoryItem.objects.all().values_list('item_name', 'company', 'item_description', 'stock_quantity', 'item_location', 'release_date')
+
+    for item in inventory:
+        writer.writerow(item)
+
+    return  response

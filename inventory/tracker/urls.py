@@ -12,4 +12,5 @@ urlpatterns = [
     path('create_inventory_item/', views.create_inventory_item, name='create_inventory_item'),
     path('delete/<int:pk>', views.DeleteView.as_view(), name='delete'),
     path('delete_inventory_item/<int:inventory_item_id>', views.delete_inventory_item, name='delete_inventory_item'),
+    path('export_inventory_to_csv/', views.export_inventory_to_csv, name='export_inventory_to_csv'),
 ]
