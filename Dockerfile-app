@@ -9,4 +9,5 @@ ADD ./ /code
 CMD /wait.sh db 5432 \
   && python inventory/manage.py collectstatic --noinput \
   && python inventory/manage.py migrate \
+  && python inventory/manage.py loaddata data.json \
   && /usr/local/bin/uwsgi --ini /code/inventory/inventory/uwsgi.ini
